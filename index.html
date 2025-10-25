@@ -9,12 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* RESET & BASE */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: #f9fafc;
@@ -24,11 +19,9 @@
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
-      overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    /* HEADER */
     header {
       text-align: center;
       margin-bottom: 2rem;
@@ -48,7 +41,7 @@
     header h1 {
       font-family: "Montserrat", sans-serif;
       font-size: 2.3rem;
-      color: #002147; /* Dark Navy Blue */
+      color: #002147;
       font-weight: 600;
     }
 
@@ -57,12 +50,11 @@
       font-weight: 400;
       margin-top: 6px;
       letter-spacing: 0.4px;
-      font-size: 0.9rem; /* smaller for subtle look */
+      font-size: 0.9rem;
     }
 
-    /* SECTIONS */
     section {
-      background: #ffffff;
+      background: #fff;
       border-radius: 16px;
       width: 100%;
       max-width: 880px;
@@ -74,42 +66,23 @@
       transform: translateY(40px);
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(0, 188, 212, 0.15);
-    }
+    section.visible { opacity: 1; transform: translateY(0); }
+    section:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 188, 212, 0.15); }
 
     h2 {
       font-family: "Montserrat", sans-serif;
-      color: #002147; /* Very Dark Navy Blue */
+      color: #002147;
       margin-bottom: 15px;
       font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: 0.5px;
     }
 
-    p, li {
-      color: #333;
-      font-size: 0.96rem;
-      line-height: 1.6;
-    }
+    p, li { color: #333; font-size: 0.96rem; line-height: 1.6; }
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+    ul { list-style: none; padding-left: 0; }
+    ul li::before { content: "• "; color: #00bcd4; }
 
-    ul li::before {
-      content: "• ";
-      color: #00bcd4;
-    }
-
-    /* GALLERY */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -122,62 +95,21 @@
       border-radius: 12px;
       padding: 1rem;
       text-align: center;
-      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
-    .gallery-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      transition: transform 0.4s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
+    .gallery-item:hover { transform: translateY(-6px); box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2); }
+    .gallery-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
 
     .gallery-item h4 {
       font-family: "Montserrat", sans-serif;
-      color: #002147; /* Very Dark Navy Blue */
+      color: #002147;
       margin-bottom: 6px;
       font-size: 1.05rem;
       font-weight: 600;
     }
 
-    /* LIGHTBOX */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 85%;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    /* BUTTON */
     .btn {
       background: #00bcd4;
       color: #fff;
@@ -190,12 +122,8 @@
       font-family: "Inter", sans-serif;
     }
 
-    .btn:hover {
-      background: #0097a7;
-      transform: scale(1.05);
-    }
+    .btn:hover { background: #0097a7; transform: scale(1.05); }
 
-    /* FOOTER */
     footer {
       margin-top: 2rem;
       color: #777;
@@ -203,10 +131,7 @@
       text-align: center;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
 
@@ -242,7 +167,7 @@
       <div class="gallery-item">
         <img src="ui-sample1.png" alt="UI Design Sample 1" />
         <h4>Mobile App Redesign</h4>
-        <p>Modern healthcare app redesign emphasizing simplicity and clarity.</p>
+        <p>Modern productivity app redesign emphasizing simplicity and clarity.</p>
       </div>
       <div class="gallery-item">
         <img src="ui-sample2.png" alt="UI Design Sample 2" />
@@ -257,7 +182,31 @@
       <div class="gallery-item">
         <img src="ui-sample4.png" alt="UI Design Sample 4" />
         <h4>Onboarding Flow</h4>
-        <p>Guided, user-friendly visual experience for first-time users.</p>
+        <p>Guided, user-friendly experience for first-time users.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔥 FULL-STACK PROJECTS SECTION -->
+  <section>
+    <h2>Full-Stack Projects</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="project1.jpg" alt="Company Landing Page" />
+        <h4>Corporate Landing Page</h4>
+        <p>Developed a sleek company landing page using <b>HTML, CSS, and JavaScript</b>, focusing on responsiveness and conversion optimization.</p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="project2.jpg" alt="Trading Bot App" />
+        <h4>Crypto & Forex Trading Bot</h4>
+        <p>Built a <b>Node.js and Python-based demo trading bot</b> integrating mock market APIs for real-time trade simulations.</p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="project3.jpg" alt="Multi-phase Web Design" />
+        <h4>Multiphase Business Website</h4>
+        <p>Designed and developed a dynamic <b>multi-service web platform</b> covering boutique, medical, and real estate solutions using <b>React and Django</b>.</p>
       </div>
     </div>
   </section>
@@ -274,13 +223,7 @@
     © 2021 Tomiwa Samuel | All Rights Reserved
   </footer>
 
-  <!-- LIGHTBOX SCRIPT -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Expanded View" />
-  </div>
-
   <script>
-    // Animate sections on scroll
     const sections = document.querySelectorAll("section");
     const showOnScroll = () => {
       const triggerBottom = window.innerHeight * 0.9;
@@ -291,17 +234,6 @@
     };
     window.addEventListener("scroll", showOnScroll);
     showOnScroll();
-
-    // Lightbox Functionality
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = lightbox.querySelector("img");
-    document.querySelectorAll(".gallery-item img").forEach(img => {
-      img.addEventListener("click", () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add("active");
-      });
-    });
-    lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
   </script>
 </body>
-  </html>
+</html>
