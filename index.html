@@ -4,23 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tomiwa Samuel | UI/UX Designer & Full-Stack Engineer</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <style>
     /* RESET & BASE */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
     }
 
     body {
-      background: #0d0d0d;
-      color: #f5f5f5;
+      background: #f9fafc;
+      color: #222;
+      font-family: "Inter", sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     /* HEADER */
@@ -37,48 +42,58 @@
       object-fit: cover;
       border: 3px solid #00bcd4;
       margin-bottom: 1rem;
-      box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.2);
     }
 
     header h1 {
-      font-size: 2.2rem;
+      font-family: "Playfair Display", serif;
+      font-size: 2.3rem;
       color: #00bcd4;
       font-weight: 600;
     }
 
     header h3 {
-      color: #ccc;
+      color: #444;
       font-weight: 400;
-      margin-top: 5px;
+      margin-top: 6px;
+      letter-spacing: 0.4px;
     }
 
     /* SECTIONS */
     section {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #ffffff;
       border-radius: 16px;
       width: 100%;
-      max-width: 850px;
-      padding: 2rem;
-      margin: 1.5rem 0;
-      backdrop-filter: blur(10px);
-      animation: fadeUp 1s ease forwards;
+      max-width: 880px;
+      padding: 2.3rem;
+      margin: 1.7rem 0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       opacity: 0;
+      transform: translateY(40px);
     }
 
     section.visible {
       opacity: 1;
+      transform: translateY(0);
+    }
+
+    section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0, 188, 212, 0.15);
     }
 
     h2 {
+      font-family: "Playfair Display", serif;
       color: #00bcd4;
       margin-bottom: 15px;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
     }
 
     p, li {
-      color: #ddd;
-      font-size: 0.95rem;
+      color: #333;
+      font-size: 0.96rem;
+      line-height: 1.6;
     }
 
     ul {
@@ -91,7 +106,7 @@
       color: #00bcd4;
     }
 
-    /* UI/UX GALLERY */
+    /* GALLERY */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -100,16 +115,17 @@
     }
 
     .gallery-item {
-      background: rgba(255, 255, 255, 0.07);
+      background: #fdfdfd;
       border-radius: 12px;
       padding: 1rem;
       text-align: center;
-      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery-item:hover {
-      transform: translateY(-8px);
-      background: rgba(0, 188, 212, 0.1);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2);
     }
 
     .gallery-item img {
@@ -126,8 +142,35 @@
     }
 
     .gallery-item h4 {
+      font-family: "Playfair Display", serif;
       color: #00bcd4;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+    }
+
+    .lightbox.active {
+      display: flex;
     }
 
     /* BUTTON */
@@ -135,11 +178,12 @@
       background: #00bcd4;
       color: #fff;
       border: none;
-      padding: 10px 18px;
+      padding: 12px 24px;
       border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s ease;
       font-weight: 600;
+      font-family: "Inter", sans-serif;
     }
 
     .btn:hover {
@@ -150,21 +194,9 @@
     /* FOOTER */
     footer {
       margin-top: 2rem;
-      color: #aaa;
+      color: #777;
       font-size: 0.85rem;
       text-align: center;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      0% {
-        transform: translateY(40px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
     }
 
     @keyframes fadeIn {
@@ -173,9 +205,9 @@
     }
   </style>
 </head>
+
 <body>
   <header>
-    <!-- 🧑 Your profile photo -->
     <img src="your-photo.jpg" alt="Tomiwa Samuel" class="profile-pic" />
     <h1>👋 Hi, I'm Tomiwa Samuel</h1>
     <h3>UI/UX Designer & Full-Stack Developer</h3>
@@ -184,9 +216,9 @@
   <section>
     <h2>About Me</h2>
     <p>
-      I'm a creative UI/UX Designer and Full-Stack Developer with a strong focus on crafting
-      visually engaging and user-friendly digital experiences. I blend design thinking with
-      technical expertise to deliver products that are both functional and delightful.
+      I'm a passionate UI/UX Designer and Full-Stack Developer with a keen eye for creating 
+      functional, visually appealing, and human-centered digital experiences. My approach 
+      blends design thinking and code craftsmanship to bring ideas to life with precision and purpose.
     </p>
   </section>
 
@@ -206,43 +238,28 @@
       <div class="gallery-item">
         <img src="ui-sample1.png" alt="UI Design Sample 1" />
         <h4>Mobile App Redesign</h4>
-        <p>Modern redesign of a productivity mobile app using Figma.</p>
+        <p>Modern health check app redesign emphasizing simplicity and clarity.</p>
       </div>
-
       <div class="gallery-item">
         <img src="ui-sample2.png" alt="UI Design Sample 2" />
         <h4>Analytics Dashboard</h4>
-        <p>UX-focused data dashboard prototype with interactive charts.</p>
+        <p>Data-driven layout focused on actionable user insights.</p>
       </div>
-
       <div class="gallery-item">
         <img src="ui-sample3.jpg" alt="UI Design Sample 3" />
         <h4>E-commerce Web UI</h4>
-        <p>Clean, minimal layout emphasizing product visibility and flow.</p>
+        <p>Minimal, product-centered layout improving conversion and engagement.</p>
       </div>
-
       <div class="gallery-item">
         <img src="ui-sample4.png" alt="UI Design Sample 4" />
         <h4>Onboarding Flow</h4>
-        <p>Simple and human-centered user onboarding experience.</p>
+        <p>Guided, user-friendly experience for first-time users.</p>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>LinkedIn</h2>
-    <div class="badge-base LI-profile-badge"
-      data-locale="en_US"
-      data-size="medium"
-      data-theme="dark"
-      data-type="HORIZONTAL"
-      data-vanity="tomiwa-samuel-21a2a7267"
-      data-version="v1">
-      <a class="badge-base__link LI-simple-link"
-         href="https://ng.linkedin.com/in/tomiwa-samuel-21a2a7267?trk=profile-badge">
-         View My LinkedIn
-      </a>
-    </div>
+  <section style="text-align: center;">
+    <a class="btn" href="https://ng.linkedin.com/in/tomiwa-samuel-21a2a7267" target="_blank">View My LinkedIn</a>
   </section>
 
   <section style="text-align: center;">
@@ -252,6 +269,11 @@
   <footer>
     © 2021 Tomiwa Samuel | All Rights Reserved
   </footer>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Expanded View" />
+  </div>
 
   <script>
     // Animate sections on scroll
@@ -265,6 +287,17 @@
     };
     window.addEventListener("scroll", showOnScroll);
     showOnScroll();
+
+    // Lightbox Functionality
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+    document.querySelectorAll(".gallery-item img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+      });
+    });
+    lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
   </script>
 </body>
 </html>
