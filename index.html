@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tomiwa Samuel | Portfolio</title>
+  <title>Tomiwa Samuel | UI/UX Designer & Full-Stack Developer</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    /* RESET & BASE */
     * {
       margin: 0;
       padding: 0;
@@ -16,168 +17,287 @@
     }
 
     body {
-      background-color: #f9fafc;
-      color: #1c1c1c;
+      background: #f9fafc;
+      color: #222;
       font-family: "Inter", sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
-      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
+    /* HEADER */
     header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00bcd4;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.2);
     }
 
     header h1 {
       font-family: "Playfair Display", serif;
-      color: #003366; /* Very dark blue */
-      font-size: 2.6rem;
-      margin-bottom: 5px;
+      font-size: 2.3rem;
+      color: #00bcd4;
+      font-weight: 600;
     }
 
     header h3 {
-      color: #007b83;
-      font-size: 1rem; /* Smaller subtitle */
-      letter-spacing: 1px;
-      font-weight: 500;
+      color: #444;
+      font-weight: 400;
+      margin-top: 6px;
+      letter-spacing: 0.4px;
     }
 
+    /* SECTIONS */
     section {
-      max-width: 800px;
+      background: #ffffff;
+      border-radius: 16px;
       width: 100%;
-      margin-bottom: 60px;
+      max-width: 880px;
+      padding: 2.3rem;
+      margin: 1.7rem 0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(40px);
     }
 
-    section h2 {
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0, 188, 212, 0.15);
+    }
+
+    h2 {
       font-family: "Playfair Display", serif;
-      color: #003366; /* Very dark blue */
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      text-align: center;
+      color: #00bcd4;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
     }
 
-    p {
-      font-size: 1rem;
-      text-align: center;
+    p, li {
       color: #333;
-      margin-bottom: 20px;
+      font-size: 0.96rem;
+      line-height: 1.6;
     }
 
-    .profile-img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    ul {
+      list-style: none;
+      padding-left: 0;
     }
 
+    ul li::before {
+      content: "• ";
+      color: #00bcd4;
+    }
+
+    /* GALLERY */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
 
     .gallery-item {
-      background: #fff;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      background: #fdfdfd;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery-item:hover {
       transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2);
     }
 
     .gallery-item img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
     }
 
     .gallery-item h4 {
       font-family: "Playfair Display", serif;
-      color: #007b83;
-      text-align: center;
-      padding: 10px;
-      font-size: 1.1rem;
+      color: #00bcd4;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
     }
 
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    /* BUTTON */
+    .btn {
+      background: #00bcd4;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-family: "Inter", sans-serif;
+    }
+
+    .btn:hover {
+      background: #0097a7;
+      transform: scale(1.05);
+    }
+
+    /* FOOTER */
     footer {
-      text-align: center;
-      font-size: 0.9rem;
+      margin-top: 2rem;
       color: #777;
-      margin-top: 40px;
+      font-size: 0.85rem;
+      text-align: center;
     }
 
-    footer a {
-      color: #007b83;
-      text-decoration: none;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <img src="your-photo.jpg" alt="Tomiwa Samuel" class="profile-img" />
-    <h1>Tomiwa Samuel</h1>
+    <img src="your-photo.jpg" alt="Tomiwa Samuel" class="profile-pic" />
+    <h1>👋 Hi, I'm Tomiwa Samuel</h1>
     <h3>UI/UX Designer & Full-Stack Developer</h3>
   </header>
 
   <section>
     <h2>About Me</h2>
     <p>
-      I’m a passionate UI/UX Designer and Full-Stack Developer focused on building creative, human-centered digital experiences. 
-      With over 5 years of experience, I combine strong technical skills with a designer’s eye for detail to craft functional and elegant products.
+      I'm a passionate UI/UX Designer and Full-Stack Developer with a keen eye for creating 
+      functional, visually appealing, and human-centered digital experiences. My approach 
+      blends design thinking and code craftsmanship to bring ideas to life with precision and purpose.
     </p>
   </section>
 
   <section>
     <h2>Skills</h2>
-    <p>
-      <strong>Design:</strong> Figma, Adobe XD, Prototyping, Wireframing, Visual Design <br />
-      <strong>Development:</strong> JavaScript, React, Node.js, HTML5, CSS3, Responsive Design
-    </p>
+    <ul>
+      <li>Design: Figma, Adobe XD, Wireframing, Prototyping, User Testing</li>
+      <li>Front-end: React, Vue.js, HTML5, CSS3, Tailwind</li>
+      <li>Back-end: Node.js, Express, Django</li>
+      <li>Version Control: Git, Stackblitz, Netlify, GitHub</li>
+    </ul>
   </section>
 
   <section>
-    <h2>UI/UX Samples</h2>
+    <h2>UI/UX Portfolio</h2>
     <div class="gallery">
       <div class="gallery-item">
-        <img src="ui-sample1.png" alt="UI Sample 1">
-        <h4>Dashboard Redesign</h4>
+        <img src="ui-sample1.png" alt="UI Design Sample 1" />
+        <h4>Mobile App Redesign</h4>
+        <p>Modern productivity app redesign emphasizing simplicity and clarity.</p>
       </div>
       <div class="gallery-item">
-        <img src="ui-sample2.png" alt="UI Sample 2">
-        <h4>Task Management App</h4>
+        <img src="ui-sample2.png" alt="UI Design Sample 2" />
+        <h4>Analytics Dashboard</h4>
+        <p>Data-driven layout focused on actionable user insights.</p>
       </div>
       <div class="gallery-item">
-        <img src="ui-sample3.jpg" alt="UI Sample 3">
-        <h4>Finance Mobile UI</h4>
+        <img src="ui-sample3.jpg" alt="UI Design Sample 3" />
+        <h4>E-commerce Web UI</h4>
+        <p>Minimal, product-centered layout improving conversion and engagement.</p>
       </div>
       <div class="gallery-item">
-        <img src="ui-sample4.png" alt="UI Sample 4">
-        <h4>E-commerce Concept</h4>
+        <img src="ui-sample4.png" alt="UI Design Sample 4" />
+        <h4>Onboarding Flow</h4>
+        <p>Guided, user-friendly experience for first-time users.</p>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>LinkedIn Profile</h2>
-    <p>
-      <a href="https://ng.linkedin.com/in/tomiwa-samuel-21a2a7267" target="_blank">
-        View My LinkedIn
-      </a>
-    </p>
+  <section style="text-align: center;">
+    <a class="btn" href="https://ng.linkedin.com/in/tomiwa-samuel-21a2a7267" target="_blank">View My LinkedIn</a>
+  </section>
+
+  <section style="text-align: center;">
+    <button class="btn" onclick="window.open('mailto:createev69@gmail.com')">Hire Me</button>
   </section>
 
   <footer>
-    <p>© 2021 Tomiwa Samuel | All Right Reserved .</p>
+    © 2021 Tomiwa Samuel | All Rights Reserved
   </footer>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Expanded View" />
+  </div>
+
+  <script>
+    // Animate sections on scroll
+    const sections = document.querySelectorAll("section");
+    const showOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.9;
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect().top;
+        if (rect < triggerBottom) sec.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", showOnScroll);
+    showOnScroll();
+
+    // Lightbox Functionality
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+    document.querySelectorAll(".gallery-item img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+      });
+    });
+    lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
+  </script>
 </body>
-        </html>
+</html>
