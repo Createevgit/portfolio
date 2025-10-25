@@ -6,71 +6,26 @@
   <title>Tomiwa Samuel | UI/UX Designer & Full-Stack Developer</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* RESET & BASE */
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       background: #f9fafc;
       color: #222;
-      font-family: "Inter", sans-serif;
+      font-family: "Playfair Display", serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 90px; /* space for fixed nav */
+      padding: 40px 20px;
       overflow-x: hidden;
-    }
-
-    /* NAVIGATION */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #001f3f;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 40px;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    nav h1 {
-      font-family: "Montserrat", sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #00bcd4;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-    }
-
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #00bcd4;
+      scroll-behavior: smooth;
     }
 
     /* HEADER */
@@ -85,22 +40,23 @@
       height: 130px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #001f3f;
+      border: 3px solid #00bcd4;
       margin-bottom: 1rem;
-      box-shadow: 0 0 25px rgba(0, 31, 63, 0.25);
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.2);
     }
 
     header h1 {
-      font-family: "Montserrat", sans-serif;
-      font-size: 2.2rem;
-      color: #001f3f;
-      font-weight: 700;
+      font-family: "Playfair Display", serif;
+      font-size: 2.3rem;
+      color: #00bcd4;
+      font-weight: 600;
     }
 
     header h3 {
       color: #444;
       font-weight: 400;
       margin-top: 6px;
+      font-size: 0.9rem;
       letter-spacing: 0.4px;
     }
 
@@ -125,14 +81,17 @@
 
     section:hover {
       transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(0, 31, 63, 0.15);
+      box-shadow: 0 15px 30px rgba(0, 188, 212, 0.15);
     }
 
+    /* CHANGED FONT FOR HEADINGS */
     h2 {
       font-family: "Montserrat", sans-serif;
-      color: #001f3f;
+      color: #003366;
       margin-bottom: 15px;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     p, li {
@@ -148,7 +107,7 @@
 
     ul li::before {
       content: "• ";
-      color: #001f3f;
+      color: #00bcd4;
     }
 
     /* GALLERY */
@@ -170,7 +129,7 @@
 
     .gallery-item:hover {
       transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgba(0, 31, 63, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2);
     }
 
     .gallery-item img {
@@ -188,39 +147,15 @@
 
     .gallery-item h4 {
       font-family: "Montserrat", sans-serif;
-      color: #001f3f;
+      color: #00bcd4;
       margin-bottom: 6px;
       font-size: 1.05rem;
-    }
-
-    /* LIGHTBOX */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 85%;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
-    }
-
-    .lightbox.active {
-      display: flex;
+      font-weight: 600;
     }
 
     /* BUTTON */
     .btn {
-      background: #001f3f;
+      background: #00bcd4;
       color: #fff;
       border: none;
       padding: 12px 24px;
@@ -228,11 +163,11 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-weight: 600;
-      font-family: "Inter", sans-serif;
+      font-family: "Montserrat", sans-serif;
     }
 
     .btn:hover {
-      background: #00bcd4;
+      background: #0097a7;
       transform: scale(1.05);
     }
 
@@ -248,42 +183,17 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
-    /* RESPONSIVE */
-    @media (max-width: 700px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      .nav-links {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-    }
   </style>
 </head>
 
 <body>
-  <!-- NAVIGATION -->
-  <nav>
-    <h1>Tomiwa Samuel</h1>
-    <div class="nav-links">
-      <a href="#about" class="active">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <!-- HEADER -->
   <header>
     <img src="your-photo.jpg" alt="Tomiwa Samuel" class="profile-pic" />
     <h1>👋 Hi, I'm Tomiwa Samuel</h1>
     <h3>UI/UX Designer & Full-Stack Developer</h3>
   </header>
 
-  <section id="about">
+  <section>
     <h2>About Me</h2>
     <p>
       I'm a passionate UI/UX Designer and Full-Stack Developer with a keen eye for creating 
@@ -292,7 +202,7 @@
     </p>
   </section>
 
-  <section id="skills">
+  <section>
     <h2>Skills</h2>
     <ul>
       <li>Design: Figma, Adobe XD, Wireframing, Prototyping, User Testing</li>
@@ -302,46 +212,39 @@
     </ul>
   </section>
 
-  <section id="portfolio">
+  <section>
     <h2>UI/UX Portfolio</h2>
     <div class="gallery">
       <div class="gallery-item">
         <img src="ui-sample1.png" alt="UI Design Sample 1" />
         <h4>Mobile App Redesign</h4>
-        <p>Modern health check app redesign emphasizing simplicity and clarity.</p>
       </div>
       <div class="gallery-item">
         <img src="ui-sample2.png" alt="UI Design Sample 2" />
         <h4>Analytics Dashboard</h4>
-        <p>Data-driven layout focused on actionable user insights.</p>
       </div>
       <div class="gallery-item">
         <img src="ui-sample3.jpg" alt="UI Design Sample 3" />
         <h4>E-commerce Web UI</h4>
-        <p>Minimal, product-centered layout improving conversion and engagement.</p>
       </div>
       <div class="gallery-item">
         <img src="ui-sample4.png" alt="UI Design Sample 4" />
         <h4>Onboarding Flow</h4>
-        <p>Guided, user-friendly experience for first-time users.</p>
       </div>
     </div>
   </section>
 
-  <section id="contact" style="text-align: center;">
+  <section style="text-align: center;">
     <a class="btn" href="https://ng.linkedin.com/in/tomiwa-samuel-21a2a7267" target="_blank">View My LinkedIn</a>
-    <br /><br />
+  </section>
+
+  <section style="text-align: center;">
     <button class="btn" onclick="window.open('mailto:createev69@gmail.com')">Hire Me</button>
   </section>
 
   <footer>
-    © 2021 Tomiwa Samuel | All Rights Reserved
+    © 2025 Tomiwa Samuel | All Rights Reserved
   </footer>
-
-  <!-- LIGHTBOX SCRIPT -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Expanded View" />
-  </div>
 
   <script>
     // Animate sections on scroll
@@ -355,35 +258,6 @@
     };
     window.addEventListener("scroll", showOnScroll);
     showOnScroll();
-
-    // Lightbox Functionality
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = lightbox.querySelector("img");
-    document.querySelectorAll(".gallery-item img").forEach(img => {
-      img.addEventListener("click", () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add("active");
-      });
-    });
-    lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
-
-    // Active nav link highlight
-    const navLinks = document.querySelectorAll(".nav-links a");
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(current)) {
-          link.classList.add("active");
-        }
-      });
-    });
   </script>
 </body>
 </html>
